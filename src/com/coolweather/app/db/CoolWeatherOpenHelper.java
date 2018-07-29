@@ -40,7 +40,10 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper{
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		
+		db.execSQL("drop table if exists Province");
+		db.execSQL("drop table if exists City");
+		db.execSQL("drop table if exists County");
+		onCreate(db);
 	}
 			
 }

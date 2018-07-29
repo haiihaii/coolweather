@@ -12,6 +12,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class CoolWeatherDB {
 	
@@ -24,7 +25,7 @@ public class CoolWeatherDB {
 	private SQLiteDatabase db;
 	
 	private CoolWeatherDB(Context context){
-		CoolWeatherOpenHelper dbHelper =new CoolWeatherOpenHelper(context,DB_NAME,null,VERSION);
+		CoolWeatherOpenHelper dbHelper =new CoolWeatherOpenHelper(context,DB_NAME,null,3);
 		db=dbHelper.getWritableDatabase();
 				
 	}
@@ -58,6 +59,9 @@ public class CoolWeatherDB {
 				province.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
 				province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
+				Log.d("mmm","id= "+cursor.getInt(cursor.getColumnIndex("id")) );
+				Log.d("mmm","name= "+cursor.getString(cursor.getColumnIndex("province_name")));
+				Log.d("mmm","code= "+cursor.getString(cursor.getColumnIndex("province_code")));
 				list.add(province);
 			}while(cursor.moveToNext());
 		}
